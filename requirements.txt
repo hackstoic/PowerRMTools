@@ -1,0 +1,7 @@
+django==1.7.1
+django-mptt==0.6.0
+Django-Select2==4.0.0
+django-reversion==1.8.5
+django-suit-ckeditor==0.0.2
+django-suit-redactor==0.0.2
+pillow
