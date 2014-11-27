@@ -29,11 +29,22 @@ class Person(models.Model):
     job_position = models.CharField("所任职位", max_length=20)
     hobby = models.TextField("爱好")
     skill = models.TextField("技能")
-    relationship = models.ForeignKey(Group)
+    group = models.ForeignKey(Group)
     acquaint_time = models.DateField("认识时间")
+    last_connection_time = models.DateField("最近联系时间")
     importance = models.CharField("重要程度", max_length=10, choices=IMPORTANCE)
+    email = models.EmailField("电子邮箱")
+    phone = models.CharField("手机号码", max_length=15)
     photo = models.ImageField("照片")
 
     def __unicode__(self):
         return "%s" % (self.lastname + self.firstname)
-    
+    def my_property(self):
+        return self.lastname + self.firstname
+    my_property.short_description = "姓名"
+    full_name = property(my_property)
+
+    def image_thumb(self):
+        return '<img src="/media/%s" width="50" height="50" />' % (self.photo)
+    image_thumb.short_description = "照片缩略图"
+    image_thumb.allow_tags = True  #  这个设置为true可以显示图片，否则显示html 文本

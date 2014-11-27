@@ -5,3 +5,7 @@ django-reversion==1.8.5
 django-suit-ckeditor==0.0.2
 django-suit-redactor==0.0.2
 pillow
+django-photologue
+django-sortedm2m
+django-model-utils
+django-import-export
