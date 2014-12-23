@@ -4,12 +4,14 @@ from django.db import models
 # Create your models here.
 
 class Group(models.Model):
+    pass
     name = models.CharField("组名称", max_length=20)
 
     def __unicode__(self):
         return "%s" % self.name
 
 class Person(models.Model):
+    pass
     GENDER = (
         ('male', "男"),
         ("female", "女"),
@@ -19,6 +21,8 @@ class Person(models.Model):
         ("important", "一般重要"),
         ("normal", "普通"),
     )
+    # group = models.ForeignKey(Group)
+    group = models.ManyToManyField(Group)
     firstname = models.CharField("名字", max_length=10)
     lastname = models.CharField("姓氏", max_length=10)
     gender = models.CharField("性别", max_length=10, choices=GENDER )
@@ -28,8 +32,7 @@ class Person(models.Model):
     company = models.CharField("公司", max_length=50)
     job_position = models.CharField("所任职位", max_length=20)
     hobby = models.TextField("爱好")
-    skill = models.TextField("技能")
-    group = models.ForeignKey(Group)
+    skill = models.TextField("技能")    
     acquaint_time = models.DateField("认识时间")
     last_connection_time = models.DateField("最近联系时间")
     importance = models.CharField("重要程度", max_length=10, choices=IMPORTANCE)
@@ -52,6 +55,7 @@ class Person(models.Model):
     image_thumb.allow_tags = True  #  这个设置为true可以显示图片，否则显示html 文本
 
 class PersonalStatus(models.Model):
+    pass
     """docstring for PersonalStatus"""
     person = models.ForeignKey(Person)
     update_time = models.DateField("更新时间", )

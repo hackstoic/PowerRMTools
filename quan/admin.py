@@ -84,7 +84,7 @@ class PersonAdmin(ImportExportModelAdmin):
     fieldsets = [
     ('基本资料',{
         'classes':('suit-tab', 'suit-tab-general',),
-        'fields':['lastname', 'firstname', 'gender', 'birth', 'location', 'hometown', ]
+        'fields':['lastname', 'firstname', 'gender', 'birth', 'location', 'hometown','group' ]
         }),
     ('职业资料',{
         'classes':('suit-tab', 'suit-tab-general',),
