@@ -1,3 +1,4 @@
 db.sqlite3
 *.pyc
-prmtools/quan/mirations/
+quan/mirations/*
+media/*

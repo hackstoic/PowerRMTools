@@ -9,3 +9,5 @@ django-photologue
 django-sortedm2m
 django-model-utils
 django-import-export
+django-datetime-widgets
+bootstrap 3

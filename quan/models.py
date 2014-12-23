@@ -35,6 +35,8 @@ class Person(models.Model):
     importance = models.CharField("重要程度", max_length=10, choices=IMPORTANCE)
     email = models.EmailField("电子邮箱")
     phone = models.CharField("手机号码", max_length=15)
+    qq = models.CharField("QQ号", max_length=15, blank=True)
+    wechat = models.CharField('微信号', max_length=25, blank=True)
     photo = models.ImageField("照片")
 
     def __unicode__(self):
@@ -48,3 +50,13 @@ class Person(models.Model):
         return '<img src="/media/%s" width="50" height="50" />' % (self.photo)
     image_thumb.short_description = "照片缩略图"
     image_thumb.allow_tags = True  #  这个设置为true可以显示图片，否则显示html 文本
+
+class PersonalStatus(models.Model):
+    """docstring for PersonalStatus"""
+    person = models.ForeignKey(Person)
+    update_time = models.DateField("更新时间", )
+    status_desc = models.CharField("动态描述", max_length=1000)
+
+    def __unicode__(self):
+        return "%s ---->  %s" % (self.update_time, self.status_desc)
+        

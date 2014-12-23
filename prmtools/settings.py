@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'photologue',
     'sortedm2m',
     'import_export',
+    'datetimewidget',
 
 )
 
@@ -54,6 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'prmtools.urls'
