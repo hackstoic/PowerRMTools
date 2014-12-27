@@ -7,7 +7,7 @@ from quan.models import Group, Person, PersonalStatus
 from django_select2 import AutoModelSelect2Field, AutoHeavySelect2Widget
 from import_export.admin import ImportExportModelAdmin
 from datetimewidget.widgets import DateTimeWidget
-from suit.widgets import SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget
+from suit.widgets import SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget, AutosizedTextarea
 from django.contrib.admin import TabularInline
 # Register your models here.
 
@@ -56,14 +56,16 @@ class PersonForm(ModelForm):
     #         }
     #     )
     # )
+
+    
     class Meta:
         model = Person
-#        widgets = {
- #           'acquaint_time':DateTimeWidget,
+        widgets = {
+            # 'hobby': AutosizedTextarea,
+            'hobby': AutosizedTextarea(attrs={'row':3 , 'class':'input-xlarge'}),
+            'skill': AutosizedTextarea(attrs={'row':3 , 'class':'input-xlarge'}),
 
-            #Use localization and bootstrap 3
-            # 'datetime': DateTimeWidget(attrs={'id':"acquaint_time"}, usel10n=True, bootstrap_version=3)
-  #      }
+       }
 
 class PersonalStatusInline(TabularInline):
     """docstring for PersonalStatusInline"""
@@ -109,9 +111,13 @@ class PersonAdmin(ImportExportModelAdmin):
 
     ]
 
-    suit_form_tabs = (('general', 'General'), ('connection', 'Connection'), ('pstatus', 'Status'),('photoes', 'Photo')
+    suit_form_tabs = (('general', 'General'), ('connection', 'Connection'), ('pstatus', 'Status'),('photoes', 'Photo'),('info','Info')
 
         )
+
+    suit_form_includes = (        
+        ('admin/person/tab_info.html', '', 'info'),
+    )
 
     # suit_form_includes = (
     #     ('admin/examples/country/custom_include.html', 'middle', 'cities'),
